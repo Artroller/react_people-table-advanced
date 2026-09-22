@@ -16,8 +16,11 @@ export const PeopleTable = ({ people, selectedSlug }: Props) => {
   const handleSort = (field: string) => {
     const params = new URLSearchParams(searchParams);
 
-    if (sort === field) {
-      params.set('order', order === 'asc' ? 'desc' : 'asc');
+    if (sort === field && order === 'desc') {
+      params.delete('sort');
+      params.delete('order');
+    } else if (sort === field) {
+      params.set('order', 'desc');
     } else {
       params.set('sort', field);
       params.set('order', 'asc');

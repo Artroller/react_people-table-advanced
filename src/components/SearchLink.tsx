@@ -1,4 +1,5 @@
 import { Link, LinkProps, useSearchParams } from 'react-router-dom';
+
 import { getSearchWith, SearchParams } from '../utils/searchHelper';
 
 type Props = LinkProps & {
@@ -12,6 +13,7 @@ export const SearchLink: React.FC<Props> = ({
   ...props
 }) => {
   const [searchParams] = useSearchParams();
+
   const search = getSearchWith(searchParams, params);
 
   let nextTo: LinkProps['to'];
